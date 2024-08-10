@@ -1,9 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+require("dotenv").config();
+
+const userSchema = new Schema(
+  {
+    name: { type: String },
+  },
+  { timestamps: true },
+);
+const Users = mongoose.model("users", userSchema);
 
 // Set up express
 const app = express();
+let mongoClient = null;
 
 // Set up parser middleware
 app.use(cookieParser());
@@ -17,6 +29,9 @@ port = process.env["BACKEND_DEVELOPMENT_PORT"] || 8080;
 
 // Set up test GET endpoint
 router.get("/api/test", function (req, res) {
+  Users.createCollection().then((error) => {
+    console.log("Collection is created");
+  });
   return res.send(`Get Hello World!`);
 });
 
@@ -24,6 +39,29 @@ router.get("/api/test", function (req, res) {
 router.post("/api/test", function (req, res) {
   return res.send(`Post Hello World!`);
 });
+
+// Set up mongodb functions
+const connectToMongoDb = async () => {
+  try {
+    const connectionString = process.env["DB_CONNECTION_STRING"];
+    mongoClient = await mongoose.connect(connectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  } catch (error) {
+    console.log(`Error connecting to MongoDB ${error}`);
+  }
+};
+
+mongoose.connection
+  .once("open", () => {
+    console.log("MongoDB connected successfully!");
+  })
+  .on("error", (error) => {
+    console.log(`Error connecting to MongoDB ${error}`);
+  });
+
+connectToMongoDb();
 
 // Launch app
 app.listen(port, () => {

@@ -12,6 +12,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
-    "meal-maven": "file:"
+    "meal-maven": "file:",
+    "mongoose": "^8.5.2"
   }
 }
