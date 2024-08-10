@@ -27,6 +27,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/", router);
 app.use("/food", require("./routers/food.router"));
+app.use("/meal", require("./routers/meal.router"));
+app.use("/day", require("./routers/day.router"));
 
 // Set up port data
 port = process.env["BACKEND_DEVELOPMENT_PORT"] || 8080;
