@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const Food = require("./models/food.model");
+const Meal = require("./models/meal.model");
+const Day = require("./models/day.model");
 const Schema = mongoose.Schema;
 require("dotenv").config();
 
@@ -29,9 +32,7 @@ port = process.env["BACKEND_DEVELOPMENT_PORT"] || 8080;
 
 // Set up test GET endpoint
 router.get("/api/test", function (req, res) {
-  Users.createCollection().then((error) => {
-    console.log("Collection is created");
-  });
+  const x = Day;
   return res.send(`Get Hello World!`);
 });
 
