@@ -35,6 +35,31 @@ router.get(`/`, async (req, res) => {
 });
 
 // READ Method
+// Searches all foods
+router.get(`/searchFoods`, async (req, res) => {
+  try {
+    // Set Up Condition
+    const condition = {};
+    // Query Name
+    if (req.query.name) {
+      condition.title = new RegExp(req.query.name, "i");
+    }
+    // Query Consumption Type
+    if (req.query.consumptionType) {
+      condition.consumptionType = req.query.consumptionType;
+    }
+    // Query Nutrition Category
+    if (req.query.nutritionCategory) {
+      condition.nutritionCategory = req.query.nutritionCategory;
+    }
+    const foods = await Food.find(condition);
+    return res.send(foods);
+  } catch (error) {
+    return throwError(req, res, error);
+  }
+});
+
+// READ Method
 // Gets a food by id
 router.get(`/:id`, async (req, res) => {
   try {

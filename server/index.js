@@ -6,6 +6,7 @@ const Food = require("./models/food.model");
 const Meal = require("./models/meal.model");
 const Day = require("./models/day.model");
 const Schema = mongoose.Schema;
+const cors = require("cors");
 require("dotenv").config();
 
 const userSchema = new Schema(
@@ -22,20 +23,20 @@ let mongoClient = null;
 
 // Set up parser middleware
 app.use(cookieParser());
+app.use(cors());
 
 // Set up express middleware
 app.use(express.json());
 app.use("/", router);
-app.use("/food", require("./routers/food.router"));
-app.use("/meal", require("./routers/meal.router"));
-app.use("/day", require("./routers/day.router"));
+app.use("/api/food", require("./routers/food.router"));
+app.use("/api/meal", require("./routers/meal.router"));
+app.use("/api/day", require("./routers/day.router"));
 
 // Set up port data
 port = process.env["BACKEND_DEVELOPMENT_PORT"] || 8080;
 
 // Set up test GET endpoint
 router.get("/api/test", function (req, res) {
-  const x = Day;
   return res.send(`Get Hello World!`);
 });
 

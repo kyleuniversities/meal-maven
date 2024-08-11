@@ -11,5 +11,4 @@ const daySchema = new Schema(
 );
 
 const Day = mongoose.model("days", daySchema);
-Day.createCollection();
 module.exports = Day;
