@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { MealContainer } from "./MealContainer";
 import { loadMeals, loadSearchedMeals } from "../services/meal";
 import { useNavigate } from "react-router";
-import { MealContainer } from "../component/MealContainer";
 
-export const ViewMealsPage = () => {
+export const ViewMealsContainer = ({
+  mealLink,
+  controlButtonsEnabled = true,
+  handleClick = () => {},
+  isCompact = false,
+}) => {
   // Fields
-  const idTag = "ViewMealsPage";
+  const idTag = "ViewMealsContainer";
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [meals, setMeals] = useState([]);
@@ -22,11 +27,11 @@ export const ViewMealsPage = () => {
 
   const handleSearchQueryKeyDown = (event) => {
     if (event.key === "Enter") {
-      handleSearchMeals(event);
+      handleSearchMeal(event);
     }
   };
 
-  const handleSearchMeals = (event) => {
+  const handleSearchMeal = (event) => {
     if (!searchQuery) {
       loadMeals(setMeals);
       return;
@@ -37,28 +42,32 @@ export const ViewMealsPage = () => {
   // Return Component
   return (
     <div className="pad-20 full-screen">
-      <div className="full-length inline-container">
-        <div className="inline-container page-title">Meals</div>
-        <div className="inline-container float-right">
-          <button
-            className="new-item-button color-blue"
-            onClick={() => navigate("/meal/new")}
-          >
-            New Meal
-          </button>
-        </div>
-        <>
+      {controlButtonsEnabled && (
+        <div className="full-length inline-container">
+          <div className="inline-container page-title">Meals</div>
           <div className="inline-container float-right">
             <button
-              className="new-item-button color-yellow"
-              onClick={() => navigate("/day")}
+              className="new-item-button color-blue"
+              onClick={() => navigate("/meal/new")}
             >
-              To Days
+              New Meal
             </button>
-            &nbsp;&nbsp;&nbsp;
           </div>
-        </>
-      </div>
+          {mealLink && (
+            <>
+              <div className="inline-container float-right">
+                <button
+                  className="new-item-button color-yellow"
+                  onClick={() => navigate("/meal")}
+                >
+                  To Days
+                </button>
+                &nbsp;&nbsp;&nbsp;
+              </div>
+            </>
+          )}
+        </div>
+      )}
 
       <div>
         <div className="inline-container">
@@ -72,7 +81,7 @@ export const ViewMealsPage = () => {
           &nbsp; &nbsp;
           <button
             className="search-button color-blue"
-            onClick={handleSearchMeals}
+            onClick={handleSearchMeal}
           >
             Search
           </button>
@@ -83,7 +92,12 @@ export const ViewMealsPage = () => {
       {meals.length > 0 ? (
         <div>
           {meals.map((meal) => (
-            <MealContainer meal={meal} />
+            <MealContainer
+              meal={meal}
+              controlButtonsEnabled={controlButtonsEnabled}
+              handleClick={handleClick}
+              isCompact={isCompact}
+            />
           ))}
         </div>
       ) : (
@@ -98,14 +112,16 @@ export const ViewMealsPage = () => {
           <br />
         </div>
       )}
-      <div className="center-text">
-        <button
-          className="new-item-button color-blue"
-          onClick={() => navigate("/meal/new")}
-        >
-          New Meal
-        </button>
-      </div>
+      {controlButtonsEnabled && (
+        <div className="center-text">
+          <button
+            className="new-item-button color-blue"
+            onClick={() => navigate("/meal/new")}
+          >
+            New Meal
+          </button>
+        </div>
+      )}
     </div>
   );
 };

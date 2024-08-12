@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { loadMeals, loadSearchedMeals } from "../services/meal";
+import { loadDays, loadSearchedDays } from "../services/day";
 import { useNavigate } from "react-router";
-import { MealContainer } from "../component/MealContainer";
+import { DayContainer } from "../component/DayContainer";
 
-export const ViewMealsPage = () => {
+export const ViewDaysPage = () => {
   // Fields
-  const idTag = "ViewMealsPage";
+  const idTag = "ViewDaysPage";
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [meals, setMeals] = useState([]);
+  const [days, setDays] = useState([]);
 
   // Use Effects
   useEffect(() => {
-    loadMeals(setMeals);
+    loadDays(setDays);
   }, [idTag]);
 
   // Handlers
@@ -22,38 +22,38 @@ export const ViewMealsPage = () => {
 
   const handleSearchQueryKeyDown = (event) => {
     if (event.key === "Enter") {
-      handleSearchMeals(event);
+      handleSearchDays(event);
     }
   };
 
-  const handleSearchMeals = (event) => {
+  const handleSearchDays = (event) => {
     if (!searchQuery) {
-      loadMeals(setMeals);
+      loadDays(setDays);
       return;
     }
-    loadSearchedMeals(searchQuery, setMeals);
+    loadSearchedDays(searchQuery, setDays);
   };
 
   // Return Component
   return (
     <div className="pad-20 full-screen">
       <div className="full-length inline-container">
-        <div className="inline-container page-title">Meals</div>
+        <div className="inline-container page-title">Days</div>
         <div className="inline-container float-right">
           <button
             className="new-item-button color-blue"
-            onClick={() => navigate("/meal/new")}
+            onClick={() => navigate("/day/new")}
           >
-            New Meal
+            New Day
           </button>
         </div>
         <>
           <div className="inline-container float-right">
             <button
               className="new-item-button color-yellow"
-              onClick={() => navigate("/day")}
+              onClick={() => navigate("/")}
             >
-              To Days
+              To Foods
             </button>
             &nbsp;&nbsp;&nbsp;
           </div>
@@ -72,7 +72,7 @@ export const ViewMealsPage = () => {
           &nbsp; &nbsp;
           <button
             className="search-button color-blue"
-            onClick={handleSearchMeals}
+            onClick={handleSearchDays}
           >
             Search
           </button>
@@ -80,10 +80,10 @@ export const ViewMealsPage = () => {
       </div>
       <br />
 
-      {meals.length > 0 ? (
+      {days.length > 0 ? (
         <div>
-          {meals.map((meal) => (
-            <MealContainer meal={meal} />
+          {days.map((day) => (
+            <DayContainer day={day} />
           ))}
         </div>
       ) : (
@@ -94,16 +94,16 @@ export const ViewMealsPage = () => {
           <br />
           <br />
           <br />
-          <div>No meals available...</div>
+          <div>No days available...</div>
           <br />
         </div>
       )}
       <div className="center-text">
         <button
           className="new-item-button color-blue"
-          onClick={() => navigate("/meal/new")}
+          onClick={() => navigate("/day/new")}
         >
-          New Meal
+          New Day
         </button>
       </div>
     </div>

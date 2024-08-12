@@ -1,71 +1,67 @@
 import { useNavigate } from "react-router";
 import "../../index.css";
 import { FieldLabel } from "./FieldLabel";
-import { deleteMeal } from "../services/meal";
-import { CompactFoodContainer } from "./CompactFoodContainer";
-import { loadMealFoods } from "../services/food";
+import { deleteDay } from "../services/day";
+import { CompactMealContainer } from "./CompactMealContainer";
+import { loadDayMeals } from "../services/meal";
 import { useEffect, useState } from "react";
-import { MealFoodsContainer } from "./MealFoodsContainer";
-import { MealFoodContainer } from "./MealFoodContainer";
+import { DayMealsContainer } from "./DayMealsContainer";
+import { DayMealContainer } from "./DayMealContainer";
 import { CumulativeFieldLabel } from "./CumulativeFieldLabel";
 
-export const MealContainer = ({
-  meal,
+export const DayContainer = ({
+  day,
   controlButtonsEnabled = true,
   handleClick = () => {},
 }) => {
   // Set Up
-  const idTag = "MealContainer";
-  const [mealFoods, setMealFoods] = useState([]);
+  const idTag = "DayContainer";
+  const [dayMeals, setDayMeals] = useState([]);
   const navigate = useNavigate();
 
   // Use Effects
   useEffect(() => {
-    loadMealFoods(meal._id, setMealFoods);
+    loadDayMeals(day._id, setDayMeals);
   }, [idTag]);
 
   // Return Component
   return (
     <div>
       <div
-        className="pad-10 meal-container color-blue-nonhover"
-        onClick={() => handleClick(meal)}
+        className="pad-10 day-container color-blue-nonhover"
+        onClick={() => handleClick(day)}
       >
-        <FieldLabel title="Title" value={meal.title} />
-        <FieldLabel title="Variant" value={meal.variant} />
-        <CumulativeFieldLabel title="Calories" list={mealFoods} />
+        <FieldLabel title="Title" value={day.title} />
+        <FieldLabel title="Variant" value={day.variant} />
+        <CumulativeFieldLabel title="Calories" list={dayMeals} />
         <CumulativeFieldLabel
           title="Protein (g)"
           itemKey="protein"
-          list={mealFoods}
+          list={dayMeals}
         />
         <CumulativeFieldLabel
           title="Carbohydrates (g)"
           itemKey="carbohydrates"
-          list={mealFoods}
+          list={dayMeals}
         />
-        <CumulativeFieldLabel
-          title="Fats (g)"
-          itemKey="fats"
-          list={mealFoods}
-        />
+        <CumulativeFieldLabel title="Fats (g)" itemKey="fats" list={dayMeals} />
         <br />
-        {mealFoods && (
+        {dayMeals && (
           <div className="padding-10">
-            <MealFoodsContainer colorClassName="color-midblue-nonhover">
+            <DayMealsContainer colorClassName="color-midblue-nonhover">
               <div>
                 <div className="field-label-title">
-                  <b>Foods: </b>
+                  <b>Meals: </b>
                 </div>
                 <br />
-                {mealFoods.map((mealFood) => (
-                  <MealFoodContainer
-                    food={mealFood}
+                {dayMeals.map((dayMeal) => (
+                  <DayMealContainer
+                    meal={dayMeal}
                     colorClassName="color-darkblue-nonhover"
                   />
                 ))}
               </div>
-            </MealFoodsContainer>
+            </DayMealsContainer>
           </div>
         )}
         <br />
@@ -75,18 +71,18 @@ export const MealContainer = ({
               <div className="float-right">
                 <button
                   className="new-item-button color-red"
-                  onClick={() => deleteMeal(meal._id)}
+                  onClick={() => deleteDay(day._id)}
                 >
-                  Delete Meal
+                  Delete Day
                 </button>
               </div>
               <div className="float-right">&nbsp;&nbsp;</div>
               <div className="float-right">
                 <button
                   className="new-item-button color-green"
-                  onClick={() => navigate(`/meal/edit/${meal._id}`)}
+                  onClick={() => navigate(`/day/edit/${day._id}`)}
                 >
-                  Edit Meal
+                  Edit Day
                 </button>
               </div>
             </div>

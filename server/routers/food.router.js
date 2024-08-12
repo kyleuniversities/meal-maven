@@ -6,6 +6,7 @@ const express = require("express");
 const Food = require("../models/food.model");
 const { throwError } = require("../utils/utils");
 const Meal = require("../models/meal.model");
+const Day = require("../models/day.model");
 const router = express.Router();
 const { ObjectId } = require("mongoose").Types;
 
@@ -69,6 +70,19 @@ router.get(`/searchFoods`, async (req, res) => {
     }
     const foods = await Food.find(condition);
     return res.send(foods);
+  } catch (error) {
+    return throwError(req, res, error);
+  }
+});
+
+// READ Method
+// Gets all food, meals, and days
+router.get(`/all`, async (req, res) => {
+  try {
+    const days = await Day.find({});
+    const meals = await Meal.find({});
+    const food = await Food.find({});
+    return res.send({ days, meals, food });
   } catch (error) {
     return throwError(req, res, error);
   }

@@ -5,7 +5,7 @@ const daySchema = new Schema(
   {
     title: { type: String },
     variant: { type: String },
-    items: [{ mealId: { type: String } }],
+    items: [{ mealId: { type: String }, amount: { type: Number } }],
   },
   { timestamps: true },
 );

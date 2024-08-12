@@ -44,6 +44,16 @@ export async function loadSearchedMeals(query, setMeals) {
 
 /**
  * READ Method
+ * Loads day meals
+ */
+export async function loadDayMeals(dayId, setMeals) {
+  const meals = await request(`/meal/day-item/${dayId}`);
+  setMeals(meals);
+  return meals;
+}
+
+/**
+ * READ Method
  * Loads a meal
  */
 export async function loadMeal(id, setMeal) {

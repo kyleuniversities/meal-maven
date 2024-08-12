@@ -5,6 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const Day = require("../models/day.model");
 const { throwError } = require("../utils/utils");
+const Meal = require("../models/meal.model");
 const router = express.Router();
 const { ObjectId } = require("mongoose").Types;
 
@@ -29,6 +30,34 @@ router.get(`/`, async (req, res) => {
   try {
     const days = await Day.find({});
     return res.send(days);
+  } catch (error) {
+    return throwError(req, res, error);
+  }
+});
+
+// READ Method
+// Gets all meals
+router.get(`/searchDays`, async (req, res) => {
+  try {
+    const condition = {};
+    if (req.query.name) {
+      condition.title = new RegExp(req.query.name, "i");
+    }
+    const days = await Day.find(condition);
+    return res.send(days);
+  } catch (error) {
+    return throwError(req, res, error);
+  }
+});
+
+// READ Method
+// Gets all food, meals, and days
+router.get(`/all`, async (req, res) => {
+  try {
+    const days = await Day.find({});
+    const meals = await Meal.find({});
+    const food = await Food.find({});
+    return res.send({ days, meals, food });
   } catch (error) {
     return throwError(req, res, error);
   }
