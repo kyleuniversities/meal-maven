@@ -4,6 +4,10 @@ import { FieldLabel } from "./FieldLabel";
 import { deleteMeal } from "../services/meal";
 import { CompactFoodContainer } from "./CompactFoodContainer";
 import { loadMealFoods } from "../services/food";
+import { useEffect, useState } from "react";
+import { MealFoodsContainer } from "./MealFoodsContainer";
+import { MealFoodContainer } from "./MealFoodContainer";
+import { CumulativeFieldLabel } from "./CumulativeFieldLabel";
 
 export const MealContainer = ({
   meal,
@@ -28,14 +32,36 @@ export const MealContainer = ({
     >
       <FieldLabel title="Title" value={meal.title} />
       <FieldLabel title="Variant" value={meal.variant} />
-      <div className="field-label-title">
-        <b>Foods: </b>
+      <CumulativeFieldLabel title="Calories" list={mealFoods} />
+      <CumulativeFieldLabel
+        title="Protein (g)"
+        itemKey="protein"
+        list={mealFoods}
+      />
+      <CumulativeFieldLabel
+        title="Carbohydrates (g)"
+        itemKey="carbohydrates"
+        list={mealFoods}
+      />
+      <CumulativeFieldLabel title="Fats (g)" itemKey="fats" list={mealFoods} />
+      <br />
+      <div className="padding-10">
+        <MealFoodsContainer colorClassName="color-midblue-nonhover">
+          <div>
+            <div className="field-label-title">
+              <b>Foods: </b>
+            </div>
+            <br />
+            {mealFoods.map((mealFood) => (
+              <MealFoodContainer
+                food={mealFood}
+                colorClassName="color-darkblue-nonhover"
+              />
+            ))}
+          </div>
+        </MealFoodsContainer>
       </div>
-      <div>
-        {mealFoods.map((mealFood) => (
-          <CompactFoodContainer food={mealFood} />
-        ))}
-      </div>
+      <br />
       {controlButtonsEnabled && (
         <div>
           <div className="inline-container">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { loadMeals, loadSearchedMeals } from "../services/meals";
+import { loadMeals, loadSearchedMeals } from "../services/meal";
 import { useNavigate } from "react-router";
 import { MealContainer } from "../component/MealContainer";
 
@@ -47,6 +47,17 @@ export const ViewMealsPage = () => {
             New Meal
           </button>
         </div>
+        <>
+          <div className="inline-container float-right">
+            <button
+              className="new-item-button color-yellow"
+              onClick={() => navigate("/")}
+            >
+              To Foods
+            </button>
+            &nbsp;&nbsp;&nbsp;
+          </div>
+        </>
       </div>
 
       <div>

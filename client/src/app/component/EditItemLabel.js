@@ -3,14 +3,14 @@ import { deepCopy, toCamelCase } from "../../common/util";
 
 export const EditItemLabel = ({
   title,
-  key = toCamelCase(title),
+  itemKey = toCamelCase(title),
   item,
   setItem,
 }) => {
   // Handle Value
   const handleValue = (event) => {
     const newItem = deepCopy(item);
-    newItem[key] = event.target.value;
+    newItem[itemKey] = event.target.value;
     setItem(newItem);
   };
 
@@ -26,7 +26,7 @@ export const EditItemLabel = ({
           className="inline-container"
           name={title.toLowerCase()}
           type="text"
-          value={item[key]}
+          value={item[itemKey]}
           onChange={handleValue}
         />
       </div>

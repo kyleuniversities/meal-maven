@@ -44,19 +44,9 @@ const PutFoodPage = ({ id }) => {
     }
   }, [id, idTag]);
 
-  // Handlers
-  const handleSaveFood = async (event) => {
-    event.preventDefault();
-    if (id) {
-      await updateFood(id, food);
-      return;
-    }
-    await addFood(food);
-  };
-
-  const handleSaveCopyFood = async (event) => {
-    event.preventDefault();
-    await addFood({
+  // Helpers
+  const makeFoodCopy = () => {
+    return {
       title: food.title,
       variant: food.variant,
       consumptionType: food.consumptionType,
@@ -71,7 +61,22 @@ const PutFoodPage = ({ id }) => {
       description: food.description,
       isVisible: food.isVisible,
       notes: food.notes,
-    });
+    };
+  };
+
+  // Handlers
+  const handleSaveFood = async (event) => {
+    event.preventDefault();
+    if (id) {
+      await updateFood(id, makeFoodCopy());
+      return;
+    }
+    await addFood(makeFoodCopy());
+  };
+
+  const handleSaveCopyFood = async (event) => {
+    event.preventDefault();
+    await addFood(makeFoodCopy());
   };
 
   return (
@@ -103,26 +108,26 @@ const PutFoodPage = ({ id }) => {
           />
           <EditItemLabel
             title="Protein (g)"
-            key="protein"
+            itemKey="protein"
             item={food}
             setItem={setFood}
           />
           <EditItemLabel
             title="Carbohydrates (g)"
-            key="carbohydrates"
+            itemKey="carbohydrates"
             item={food}
             setItem={setFood}
           />
           <EditItemLabel
             title="Fats (g)"
-            key="fats"
+            itemKey="fats"
             item={food}
             setItem={setFood}
           />
 
           <EditItemDropdown
             title="Serving Type"
-            valueItemList={["Grams", "Units", "Cups"]}
+            valueItemList={["Grams", "Units", "Cups", "Tablespoons"]}
             item={food}
             setItem={setFood}
           />

@@ -3,7 +3,7 @@ import "../../index.css";
 
 export const EditItemDropdown = ({
   title,
-  key = toCamelCase(title),
+  itemKey = toCamelCase(title),
   valueItemList,
   item,
   setItem,
@@ -11,7 +11,7 @@ export const EditItemDropdown = ({
   // Handle Value
   const handleValue = (event) => {
     const newItem = deepCopy(item);
-    newItem[key] = event.target.value;
+    newItem[itemKey] = event.target.value;
     setItem(newItem);
   };
 
@@ -25,7 +25,7 @@ export const EditItemDropdown = ({
         </div>
         <select
           className="edit-dropdown"
-          value={item[key]}
+          value={item[itemKey]}
           onChange={handleValue}
         >
           {valueItemList.map((valueItem, i) => (

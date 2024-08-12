@@ -18,7 +18,7 @@ export async function addMeal(mealBody) {
   // Run request
   return await request(`/meal`, options).then((meal) => {
     debugAlert("addMeal-finished");
-    window.location.assign(`/`);
+    window.location.assign(`/meal`);
   });
 }
 
@@ -69,7 +69,7 @@ export async function updateMeal(id, mealBody) {
   // Run request
   return await request(`/meal/${id}`, options).then((meal) => {
     debugAlert("updateMeal-finished");
-    window.location.assign(`/`);
+    window.location.assign(`/meal`);
   });
 }
 
@@ -85,6 +85,6 @@ export async function deleteMeal(id) {
 
   // Run request
   return await request(`/meal/${id}`, options).then((meal) => {
-    window.location.assign(`/`);
+    window.location.assign(`/meal`);
   });
 }

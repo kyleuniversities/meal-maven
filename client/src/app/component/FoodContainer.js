@@ -7,6 +7,7 @@ export const FoodContainer = ({
   food,
   controlButtonsEnabled = true,
   handleClick = () => {},
+  isCompact = false,
 }) => {
   // Set Up
   const navigate = useNavigate();
@@ -29,21 +30,28 @@ export const FoodContainer = ({
   // Return Component
   return (
     <div
-      className="pad-10 food-container color-blue-nonhover"
+      className={`pad-10 food-container color-blue${isCompact ? "" : "-nonhover"}`}
       onClick={() => handleClick(food)}
     >
       <FieldLabel title="Title" value={food.title} />
       <FieldLabel title="Variant" value={food.variant} />
       <FieldLabel title="Calories" value={food.calories} />
-      <FieldLabel title="Consumption Type" value={food.consumptionType} />
-      <FieldLabel title="Nutrition Category" value={food.nutritionCategory} />
-      <FieldLabel title="Protein" value={`${food.protein}g`} />
-      <FieldLabel title="Carbohydrates" value={`${food.carbohydrates}g`} />
-      <FieldLabel title="Fats" value={`${food.fats}g`} />
-      <FieldLabel title="Serving Type" value={food.servingType} />
-      <FieldLabel title="Serving Size" value={food.servingSize} />
-      <FieldLabel title="Price" value={toPriceText(food.pricePerServing)} />
-      <FieldLabel title="Description" value={food.description} />
+      {!isCompact && (
+        <>
+          <FieldLabel title="Consumption Type" value={food.consumptionType} />
+          <FieldLabel
+            title="Nutrition Category"
+            value={food.nutritionCategory}
+          />
+          <FieldLabel title="Protein" value={`${food.protein}g`} />
+          <FieldLabel title="Carbohydrates" value={`${food.carbohydrates}g`} />
+          <FieldLabel title="Fats" value={`${food.fats}g`} />
+          <FieldLabel title="Serving Type" value={food.servingType} />
+          <FieldLabel title="Serving Size" value={food.servingSize} />
+          <FieldLabel title="Price" value={toPriceText(food.pricePerServing)} />
+          <FieldLabel title="Description" value={food.description} />
+        </>
+      )}
       {controlButtonsEnabled && (
         <div>
           <div className="inline-container">

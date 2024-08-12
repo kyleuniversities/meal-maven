@@ -93,6 +93,15 @@ code {
   border-radius: 20px;
 }
 
+.meal-foods-container {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  border: 1px solid rgb(60, 90, 100);
+  border-radius: 20px;
+}
+
 .full-screen {
   width: 97%;
 }
@@ -141,6 +150,16 @@ code {
   border: 2px solid rgb(120, 180, 200);
 }
 
+.color-midblue-nonhover {
+  background-color: rgb(185, 235, 240);
+  border: 2px solid rgb(95, 155, 165);
+}
+
+.color-darkblue-nonhover {
+  background-color: rgb(170, 220, 225);
+  border: 2px solid rgb(70, 130, 140);
+}
+
 .color-blue {
   background-color: rgb(200, 250, 255);
   border: 2px solid rgb(120, 180, 200);
@@ -169,6 +188,16 @@ code {
 .color-green:hover {
   background-color: rgb(170, 255, 170);
   border: 2px solid rgb(120, 180, 120);
+}
+
+.color-yellow {
+  background-color: rgb(250, 250, 200);
+  border: 2px solid rgb(190, 190, 120);
+}
+
+.color-yellow:hover {
+  background-color: rgb(230, 230, 170);
+  border: 2px solid rgb(190, 190, 120);
 }
 
 .field-label-container {

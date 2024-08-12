@@ -36,5 +36,5 @@ export const ViewFoodPage = () => {
   };
 
   // Return Component
-  return <ViewFoodsContainer controlButtonsEnabled />;
+  return <ViewFoodsContainer mealLink controlButtonsEnabled />;
 };

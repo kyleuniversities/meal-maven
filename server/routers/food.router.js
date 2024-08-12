@@ -99,7 +99,9 @@ router.get(`/meal-item/:mealId`, async (req, res) => {
       const foodId = food._id.toString();
       for (let mealFood of mealFoods) {
         if (mealFood.foodId === foodId) {
-          matchingFoods.push(food);
+          const matchingFood = food.toJSON();
+          matchingFood.amount = mealFood.amount;
+          matchingFoods.push(matchingFood);
         }
       }
     }

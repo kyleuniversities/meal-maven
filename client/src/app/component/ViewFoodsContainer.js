@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { FoodContainer } from "./FoodContainer";
+import { loadFoods, loadSearchedFoods } from "../services/food";
+import { useNavigate } from "react-router";
 
 export const ViewFoodsContainer = ({
+  mealLink,
   controlButtonsEnabled = true,
   handleClick = () => {},
+  isCompact = false,
 }) => {
   // Fields
   const idTag = "ViewFoodsContainer";
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [foods, setFoods] = useState([]);
 
@@ -48,6 +53,19 @@ export const ViewFoodsContainer = ({
               New Food
             </button>
           </div>
+          {mealLink && (
+            <>
+              <div className="inline-container float-right">
+                <button
+                  className="new-item-button color-yellow"
+                  onClick={() => navigate("/meal")}
+                >
+                  To Meals
+                </button>
+                &nbsp;&nbsp;&nbsp;
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -78,6 +96,7 @@ export const ViewFoodsContainer = ({
               food={food}
               controlButtonsEnabled={controlButtonsEnabled}
               handleClick={handleClick}
+              isCompact={isCompact}
             />
           ))}
         </div>
@@ -93,14 +112,16 @@ export const ViewFoodsContainer = ({
           <br />
         </div>
       )}
-      <div className="center-text">
-        <button
-          className="new-item-button color-blue"
-          onClick={() => navigate("/food/new")}
-        >
-          New Food
-        </button>
-      </div>
+      {controlButtonsEnabled && (
+        <div className="center-text">
+          <button
+            className="new-item-button color-blue"
+            onClick={() => navigate("/food/new")}
+          >
+            New Food
+          </button>
+        </div>
+      )}
     </div>
   );
 };
