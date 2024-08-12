@@ -29,7 +29,9 @@ router.post(`/`, async (req, res) => {
 // Gets all meals
 router.get(`/`, async (req, res) => {
   try {
-    const meals = await Meal.find({});
+    const visibilityRank = req.query.visibilityRank || 1;
+    const condition = { visibilityRank: { $lte: visibilityRank } };
+    const meals = await Meal.find(condition);
     return res.send(meals);
   } catch (error) {
     return throwError(req, res, error);
@@ -53,7 +55,8 @@ router.get(`/all`, async (req, res) => {
 // Gets all meals
 router.get(`/searchMeals`, async (req, res) => {
   try {
-    const condition = {};
+    const visibilityRank = req.query.visibilityRank || 1;
+    const condition = { visibilityRank: { $lte: visibilityRank } };
     if (req.query.name) {
       condition.title = new RegExp(req.query.name, "i");
     }

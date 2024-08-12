@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import "../../index.css";
 import { FieldLabel } from "./FieldLabel";
-import { deleteFood } from "../services/food";
+import { deleteFood, hideFood, unhideFood } from "../services/food";
 
 export const FoodContainer = ({
   food,
@@ -55,6 +55,28 @@ export const FoodContainer = ({
       {controlButtonsEnabled && (
         <div>
           <div className="inline-container">
+            {food.visibilityRank > 1 && (
+              <>
+                <div className="float-right">
+                  <button
+                    className="new-item-button color-purple"
+                    onClick={() => unhideFood(food._id, food)}
+                  >
+                    Unhide Food
+                  </button>
+                </div>
+                <div className="float-right">&nbsp;&nbsp;</div>
+              </>
+            )}
+            <div className="float-right">
+              <button
+                className="new-item-button color-yellow"
+                onClick={() => hideFood(food._id, food)}
+              >
+                Hide Food
+              </button>
+            </div>
+            <div className="float-right">&nbsp;&nbsp;</div>
             <div className="float-right">
               <button
                 className="new-item-button color-red"

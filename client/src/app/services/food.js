@@ -1,3 +1,4 @@
+import { VISIBILITY_RANK } from "../config/config";
 import { debugAlert } from "./debugAlert";
 import { request } from "./request";
 
@@ -27,7 +28,7 @@ export async function addFood(foodBody) {
  * Loads all foods
  */
 export async function loadFoods(setFoods) {
-  const foods = await request(`/food`);
+  const foods = await request(`/food?visibilityRank=${VISIBILITY_RANK}`);
   setFoods(foods);
   return foods;
 }
@@ -47,7 +48,9 @@ export async function loadMealFoods(mealId, setFoods) {
  * Loads all foods
  */
 export async function loadSearchedFoods(query, setFoods) {
-  const foods = await request(`/food?name=${query}`);
+  const foods = await request(
+    `/food?name=${query}&visibilityRank=${VISIBILITY_RANK}`,
+  );
   setFoods(foods);
   return foods;
 }
@@ -81,6 +84,26 @@ export async function updateFood(id, foodBody) {
     debugAlert("updateFood-finished");
     window.location.assign(`/`);
   });
+}
+
+/**
+ * UPDATE Method
+ * Hides a food
+ */
+export async function hideFood(id, foodBody) {
+  const visibilityRank = foodBody.visibilityRank || 1;
+  foodBody.visibilityRank = visibilityRank + 1;
+  return await updateFood(id, foodBody);
+}
+
+/**
+ * UPDATE Method
+ * Unhide a food
+ */
+export async function unhideFood(id, foodBody) {
+  const visibilityRank = foodBody.visibilityRank || 1;
+  foodBody.visibilityRank = visibilityRank - 1;
+  return await updateFood(id, foodBody);
 }
 
 /**

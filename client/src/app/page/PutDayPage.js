@@ -27,6 +27,8 @@ const PutDaysPage = ({ id }) => {
       : {
           title: "Sample Day",
           variant: "Normal",
+          weight: 0,
+          visibilityRank: 1,
           items: [],
         },
   );
@@ -50,6 +52,7 @@ const PutDaysPage = ({ id }) => {
     return {
       title: day.title,
       variant: day.variant,
+      visibilityRank: day.visibilityRank,
       items: dayMeals.map((dayMeal) => ({
         ...dayMeal,
         mealId: dayMeal._id,

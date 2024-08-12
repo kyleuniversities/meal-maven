@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import "../../index.css";
 import { FieldLabel } from "./FieldLabel";
-import { deleteMeal } from "../services/meal";
+import { deleteMeal, hideMeal, unhideMeal } from "../services/meal";
 import { CompactFoodContainer } from "./CompactFoodContainer";
 import { loadMealFoods } from "../services/food";
 import { useEffect, useState } from "react";
@@ -72,6 +72,28 @@ export const MealContainer = ({
         {controlButtonsEnabled && (
           <div>
             <div className="inline-container">
+              {meal.visibilityRank > 1 && (
+                <>
+                  <div className="float-right">
+                    <button
+                      className="new-item-button color-purple"
+                      onClick={() => unhideMeal(meal._id, meal)}
+                    >
+                      Unhide Meal
+                    </button>
+                  </div>
+                  <div className="float-right">&nbsp;&nbsp;</div>
+                </>
+              )}
+              <div className="float-right">
+                <button
+                  className="new-item-button color-yellow"
+                  onClick={() => hideMeal(meal._id, meal)}
+                >
+                  Hide Meal
+                </button>
+              </div>
+              <div className="float-right">&nbsp;&nbsp;</div>
               <div className="float-right">
                 <button
                   className="new-item-button color-red"

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import "../../index.css";
 import { FieldLabel } from "./FieldLabel";
-import { deleteDay } from "../services/day";
+import { deleteDay, hideDay, unhideDay } from "../services/day";
 import { CompactMealContainer } from "./CompactMealContainer";
 import { loadDayMeals } from "../services/meal";
 import { useEffect, useState } from "react";
@@ -68,6 +68,28 @@ export const DayContainer = ({
         {controlButtonsEnabled && (
           <div>
             <div className="inline-container">
+              {day.visibilityRank > 1 && (
+                <>
+                  <div className="float-right">
+                    <button
+                      className="new-item-button color-purple"
+                      onClick={() => unhideDay(day._id, day)}
+                    >
+                      Unhide Day
+                    </button>
+                  </div>
+                  <div className="float-right">&nbsp;&nbsp;</div>
+                </>
+              )}
+              <div className="float-right">
+                <button
+                  className="new-item-button color-yellow"
+                  onClick={() => hideDay(day._id, day)}
+                >
+                  Hide Day
+                </button>
+              </div>
+              <div className="float-right">&nbsp;&nbsp;</div>
               <div className="float-right">
                 <button
                   className="new-item-button color-red"

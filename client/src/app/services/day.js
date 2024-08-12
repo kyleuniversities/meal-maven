@@ -1,3 +1,4 @@
+import { VISIBILITY_RANK } from "../config/config";
 import { debugAlert } from "./debugAlert";
 import { request } from "./request";
 
@@ -27,7 +28,7 @@ export async function addDay(dayBody) {
  * Loads all days
  */
 export async function loadDays(setDays) {
-  const days = await request(`/day`);
+  const days = await request(`/day?visibilityRank=${VISIBILITY_RANK}`);
   setDays(days);
   return days;
 }
@@ -37,7 +38,9 @@ export async function loadDays(setDays) {
  * Loads all days
  */
 export async function loadSearchedDays(query, setDays) {
-  const days = await request(`/day?name=${query}`);
+  const days = await request(
+    `/day?name=${query}&visibilityRank=${VISIBILITY_RANK}`,
+  );
   setDays(days);
   return days;
 }
@@ -71,6 +74,26 @@ export async function updateDay(id, dayBody) {
     debugAlert("updateDay-finished");
     window.location.assign(`/day`);
   });
+}
+
+/**
+ * UPDATE Method
+ * Hides a day
+ */
+export async function hideDay(id, dayBody) {
+  const visibilityRank = dayBody.visibilityRank || 1;
+  dayBody.visibilityRank = visibilityRank + 1;
+  return await updateDay(id, dayBody);
+}
+
+/**
+ * UPDATE Method
+ * Unhides a day
+ */
+export async function unhideDay(id, dayBody) {
+  const visibilityRank = dayBody.visibilityRank || 1;
+  dayBody.visibilityRank = visibilityRank - 1;
+  return await updateDay(id, dayBody);
 }
 
 /**

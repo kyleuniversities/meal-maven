@@ -30,7 +30,8 @@ router.post(`/`, async (req, res) => {
 router.get(`/`, async (req, res) => {
   try {
     // Set Up Condition
-    const condition = {};
+    const visibilityRank = req.query.visibilityRank || 1;
+    const condition = { visibilityRank: { $lte: visibilityRank } };
     // Query Name
     if (req.query.name) {
       condition.title = new RegExp(req.query.name, "i");
@@ -51,7 +52,8 @@ router.get(`/`, async (req, res) => {
 router.get(`/searchFoods`, async (req, res) => {
   try {
     // Set Up Condition
-    const condition = {};
+    const visibilityRank = req.query.visibilityRank || 1;
+    const condition = { visibilityRank: { $lte: visibilityRank } };
     // Query Name
     if (req.query.name) {
       condition.title = new RegExp(req.query.name, "i");

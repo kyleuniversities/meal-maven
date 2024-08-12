@@ -6,6 +6,7 @@ const express = require("express");
 const Day = require("../models/day.model");
 const { throwError } = require("../utils/utils");
 const Meal = require("../models/meal.model");
+const Food = require("../models/food.model");
 const router = express.Router();
 const { ObjectId } = require("mongoose").Types;
 
@@ -28,7 +29,8 @@ router.post(`/`, async (req, res) => {
 // Gets all days
 router.get(`/`, async (req, res) => {
   try {
-    const days = await Day.find({});
+    const visibilityRank = req.query.visibilityRank || 1;
+    const days = await Day.find({ visibilityRank: { $lte: visibilityRank } });
     return res.send(days);
   } catch (error) {
     return throwError(req, res, error);
@@ -39,7 +41,8 @@ router.get(`/`, async (req, res) => {
 // Gets all meals
 router.get(`/searchDays`, async (req, res) => {
   try {
-    const condition = {};
+    const visibilityRank = req.query.visibilityRank || 1;
+    const condition = { visibilityRank: { $lte: visibilityRank } };
     if (req.query.name) {
       condition.title = new RegExp(req.query.name, "i");
     }

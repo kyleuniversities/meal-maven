@@ -5,6 +5,7 @@ const mealSchema = new Schema(
   {
     title: { type: String },
     variant: { type: String },
+    visibilityRank: { type: Number, default: 1 },
     items: [{ foodId: { type: String }, amount: { type: Number } }],
   },
   { timestamps: true },

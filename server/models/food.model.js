@@ -16,6 +16,7 @@ const foodSchema = new Schema(
     pricePerServing: { type: Number },
     description: { type: String },
     isVisible: { type: Boolean, default: false },
+    visibilityRank: { type: Number, default: 1 },
     originId: { type: String, default: null },
     notes: [{ type: String }],
   },

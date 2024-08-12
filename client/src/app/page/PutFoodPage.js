@@ -33,6 +33,7 @@ const PutFoodPage = ({ id }) => {
           pricePerServing: 500,
           description: "This is a food",
           isVisible: true,
+          visibilityRank: 1,
           notes: [],
         },
   );
@@ -60,6 +61,7 @@ const PutFoodPage = ({ id }) => {
       pricePerServing: food.pricePerServing,
       description: food.description,
       isVisible: food.isVisible,
+      visibilityRank: food.visibilityRank,
       notes: food.notes,
     };
   };

@@ -200,6 +200,16 @@ code {
   border: 2px solid rgb(190, 190, 120);
 }
 
+.color-purple {
+  background-color: rgb(220, 200, 250);
+  border: 2px solid rgb(170, 120, 190);
+}
+
+.color-purple:hover {
+  background-color: rgb(210, 180, 230);
+  border: 2px solid rgb(170, 120, 190);
+}
+
 .field-label-container {
   /*background-color: rgb(170, 220, 230);
   border: 1px solid rgb(140, 180, 200);

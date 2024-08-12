@@ -27,6 +27,7 @@ const PutMealsPage = ({ id }) => {
       : {
           title: "Sample Meal",
           variant: "Normal",
+          visibilityRank: 1,
           items: [],
         },
   );
@@ -50,6 +51,7 @@ const PutMealsPage = ({ id }) => {
     return {
       title: meal.title,
       variant: meal.variant,
+      visibilityRank: meal.visibilityRank,
       items: mealFoods.map((mealFood) => ({
         ...mealFood,
         foodId: mealFood._id,
