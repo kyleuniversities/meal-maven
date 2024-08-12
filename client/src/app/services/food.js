@@ -34,6 +34,26 @@ export async function loadFoods(setFoods) {
 
 /**
  * READ Method
+ * Loads all foods
+ */
+export async function loadMealFoods(mealId, setFoods) {
+  const foods = await request(`/food/meal-item/${mealId}`);
+  setFoods(foods);
+  return foods;
+}
+
+/**
+ * READ Method
+ * Loads all foods
+ */
+export async function loadSearchedFoods(query, setFoods) {
+  const foods = await request(`/food?name=${query}`);
+  setFoods(foods);
+  return foods;
+}
+
+/**
+ * READ Method
  * Loads a food
  */
 export async function loadFood(id, setFood) {

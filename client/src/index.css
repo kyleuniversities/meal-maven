@@ -71,6 +71,28 @@ code {
   width: 200px;
 }
 
+.edit-dropdown {
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  width: 170px;
+}
+
+.center-text {
+  width: 100%;
+  text-align: center;
+}
+
+.search-bar {
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+}
+
 .full-screen {
   width: 97%;
 }
@@ -86,6 +108,14 @@ code {
 .page-title {
   font-size: 20px;
   font-weight: bold;
+}
+
+.search-button {
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
 }
 
 .new-item-button {
