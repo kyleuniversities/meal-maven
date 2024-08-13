@@ -7,12 +7,14 @@ import { ViewMealsPage } from "./app/page/ViewMealsPage";
 import { ViewDaysPage } from "./app/page/ViewDaysPage";
 import { AddDayPage, EditDayPage } from "./app/page/PutDayPage";
 import { ClosedLandingPage } from "./app/page/ClosedLandingPage";
+import { RequestPage } from "./app/page/RequestPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<ClosedLandingPage />} />
+        <Route path="/request" element={<RequestPage />} />
         <Route path="/meal-maven/day" element={<ViewDaysPage />} />
         <Route path="/meal-maven/day/new" element={<AddDayPage />} />
         <Route path="/meal-maven/day/edit/:id" element={<EditDayPage />} />

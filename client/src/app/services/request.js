@@ -45,6 +45,23 @@ export const requestWithFullOptions = async (url, fullOptions) => {
 };
 
 /**
+ * Utility function used for api request to the backend
+ */
+export const requestWithFullUrl = async (fullUrl, options = {}) => {
+  // Set up headers
+  const headers = collectHeaders(options);
+
+  // Set up API request parameters
+  const fullOptions = {
+    ...options,
+    headers,
+  };
+
+  // Set up headers
+  return fullRequest(fullUrl, fullOptions);
+};
+
+/**
  * Utility function used for api request to the backend including the api host
  */
 export const fullRequest = async (fullUrl, fullOptions) => {
