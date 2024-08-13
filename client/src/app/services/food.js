@@ -19,7 +19,7 @@ export async function addFood(foodBody) {
   // Run request
   return await request(`/food`, options).then((food) => {
     debugAlert("addFood-finished");
-    window.location.assign(`/`);
+    window.location.assign(`/meal-maven`);
   });
 }
 
@@ -27,8 +27,8 @@ export async function addFood(foodBody) {
  * READ Method
  * Loads all foods
  */
-export async function loadFoods(setFoods) {
-  const foods = await request(`/food?visibilityRank=${VISIBILITY_RANK}`);
+export async function loadFoods(visibilityRank, setFoods) {
+  const foods = await request(`/food?visibilityRank=${visibilityRank}`);
   setFoods(foods);
   return foods;
 }
@@ -47,9 +47,9 @@ export async function loadMealFoods(mealId, setFoods) {
  * READ Method
  * Loads all foods
  */
-export async function loadSearchedFoods(query, setFoods) {
+export async function loadSearchedFoods(visibilityRank, query, setFoods) {
   const foods = await request(
-    `/food?name=${query}&visibilityRank=${VISIBILITY_RANK}`,
+    `/food?name=${query}&visibilityRank=${visibilityRank}`,
   );
   setFoods(foods);
   return foods;
@@ -82,7 +82,7 @@ export async function updateFood(id, foodBody) {
   // Run request
   return await request(`/food/${id}`, options).then((food) => {
     debugAlert("updateFood-finished");
-    window.location.assign(`/`);
+    window.location.assign(`/meal-maven`);
   });
 }
 
@@ -118,6 +118,6 @@ export async function deleteFood(id) {
 
   // Run request
   return await request(`/food/${id}`, options).then((food) => {
-    window.location.assign(`/`);
+    window.location.assign(`/meal-maven`);
   });
 }

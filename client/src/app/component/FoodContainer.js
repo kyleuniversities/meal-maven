@@ -89,7 +89,7 @@ export const FoodContainer = ({
             <div className="float-right">
               <button
                 className="new-item-button color-green"
-                onClick={() => navigate(`/food/edit/${food._id}`)}
+                onClick={() => navigate(`/meal-maven/food/edit/${food._id}`)}
               >
                 Edit Food
               </button>

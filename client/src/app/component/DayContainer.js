@@ -33,6 +33,7 @@ export const DayContainer = ({
       >
         <FieldLabel title="Title" value={day.title} />
         <FieldLabel title="Variant" value={day.variant} />
+        <FieldLabel title="Starting Weight" value={day.startingWeight} />
         <CumulativeFieldLabel title="Calories" list={dayMeals} />
         <CumulativeFieldLabel
           title="Protein (g)"
@@ -102,7 +103,7 @@ export const DayContainer = ({
               <div className="float-right">
                 <button
                   className="new-item-button color-green"
-                  onClick={() => navigate(`/day/edit/${day._id}`)}
+                  onClick={() => navigate(`/meal-maven/day/edit/${day._id}`)}
                 >
                   Edit Day
                 </button>

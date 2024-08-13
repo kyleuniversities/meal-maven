@@ -31,7 +31,7 @@ router.get(`/`, async (req, res) => {
   try {
     const visibilityRank = req.query.visibilityRank || 1;
     const condition = { visibilityRank: { $lte: visibilityRank } };
-    const meals = await Meal.find(condition);
+    const meals = await Meal.find(condition).sort({ title: 1 });
     return res.send(meals);
   } catch (error) {
     return throwError(req, res, error);
@@ -60,7 +60,7 @@ router.get(`/searchMeals`, async (req, res) => {
     if (req.query.name) {
       condition.title = new RegExp(req.query.name, "i");
     }
-    const meals = await Meal.find(condition);
+    const meals = await Meal.find(condition).sort({ title: 1 });
     return res.send(meals);
   } catch (error) {
     return throwError(req, res, error);
@@ -121,10 +121,12 @@ router.get(`/day-item/:dayId`, async (req, res) => {
             const protein = matchingMeal.protein || 0;
             const carbohydrates = matchingMeal.carbohydrates || 0;
             const fats = matchingMeal.fats || 0;
-            matchingMeal.calories = calories + mealFood.calories;
-            matchingMeal.protein = protein + mealFood.protein;
-            matchingMeal.carbohydrates = carbohydrates + mealFood.carbohydrates;
-            matchingMeal.fats = fats + mealFood.fats;
+            matchingMeal.calories =
+              calories + mealFood.calories * mealFood.amount;
+            matchingMeal.protein = protein + mealFood.protein * mealFood.amount;
+            matchingMeal.carbohydrates =
+              carbohydrates + mealFood.carbohydrates * mealFood.amount;
+            matchingMeal.fats = fats + mealFood.fats * mealFood.amount;
           }
           matchingMeals.push(matchingMeal);
         }

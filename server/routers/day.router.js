@@ -30,7 +30,9 @@ router.post(`/`, async (req, res) => {
 router.get(`/`, async (req, res) => {
   try {
     const visibilityRank = req.query.visibilityRank || 1;
-    const days = await Day.find({ visibilityRank: { $lte: visibilityRank } });
+    const days = await Day.find({
+      visibilityRank: { $lte: visibilityRank },
+    }).sort({ createdAt: -1 });
     return res.send(days);
   } catch (error) {
     return throwError(req, res, error);
@@ -46,7 +48,7 @@ router.get(`/searchDays`, async (req, res) => {
     if (req.query.name) {
       condition.title = new RegExp(req.query.name, "i");
     }
-    const days = await Day.find(condition);
+    const days = await Day.find(condition).sort({ createdAt: -1 });
     return res.send(days);
   } catch (error) {
     return throwError(req, res, error);

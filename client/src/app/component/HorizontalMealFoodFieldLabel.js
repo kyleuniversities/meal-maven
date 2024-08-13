@@ -11,19 +11,19 @@ export const HorizontalMealFoodFieldLabel = ({ food }) => {
           <b>
             <i>Amount: </i>
           </b>
-          {food.amount},&emsp;&emsp;&emsp;&emsp;&emsp;
+          {food.amount}&emsp;&emsp;&emsp;&emsp;&emsp;
           <b>
             <i>Calories: </i>
           </b>
-          {food.calories * food.amount},&emsp;&emsp;&emsp;&emsp;&emsp;
+          {food.calories * food.amount}&emsp;&emsp;&emsp;&emsp;&emsp;
           <b>
             <i>Protein: </i>
           </b>
-          {food.protein * food.amount},&emsp;&emsp;&emsp;&emsp;&emsp;
+          {food.protein * food.amount}&emsp;&emsp;&emsp;&emsp;&emsp;
           <b>
             <i>Carbohydrates: </i>
           </b>
-          {food.carbohydrates * food.amount},&emsp;&emsp;&emsp;&emsp;&emsp;
+          {food.carbohydrates * food.amount}&emsp;&emsp;&emsp;&emsp;&emsp;
           <b>
             <i>Fats: </i>
           </b>

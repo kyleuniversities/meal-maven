@@ -13,12 +13,15 @@ export const ViewFoodsContainer = ({
   const idTag = "ViewFoodsContainer";
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [visibilityRank, setVisibilityRank] = useState("1");
   const [foods, setFoods] = useState([]);
 
   // Use Effects
   useEffect(() => {
-    loadFoods(setFoods);
-  }, [idTag]);
+    if (idTag && visibilityRank) {
+      loadFoods(visibilityRank, setFoods);
+    }
+  }, [idTag, visibilityRank]);
 
   // Handlers
   const handleSearchQuery = (event) => {
@@ -33,10 +36,14 @@ export const ViewFoodsContainer = ({
 
   const handleSearchFood = (event) => {
     if (!searchQuery) {
-      loadFoods(setFoods);
+      loadFoods(visibilityRank, setFoods);
       return;
     }
-    loadSearchedFoods(searchQuery, setFoods);
+    loadSearchedFoods(visibilityRank, searchQuery, setFoods);
+  };
+
+  const handleVisibilityRank = (event) => {
+    setVisibilityRank(event.target.value);
   };
 
   // Return Component
@@ -48,7 +55,7 @@ export const ViewFoodsContainer = ({
           <div className="inline-container float-right">
             <button
               className="new-item-button color-blue"
-              onClick={() => navigate("/food/new")}
+              onClick={() => navigate("/meal-maven/food/new")}
             >
               New Food
             </button>
@@ -58,7 +65,7 @@ export const ViewFoodsContainer = ({
               <div className="inline-container float-right">
                 <button
                   className="new-item-button color-yellow"
-                  onClick={() => navigate("/meal")}
+                  onClick={() => navigate("/meal-maven/meal")}
                 >
                   To Meals
                 </button>
@@ -69,7 +76,7 @@ export const ViewFoodsContainer = ({
         </div>
       )}
 
-      <div>
+      <div className="top-controls-container">
         <div className="inline-container">
           <input
             className="search-bar"
@@ -85,6 +92,21 @@ export const ViewFoodsContainer = ({
           >
             Search
           </button>
+        </div>
+        <div className="inline-container float-right">
+          <select
+            className="edit-dropdown"
+            value={visibilityRank}
+            onChange={handleVisibilityRank}
+          >
+            <option default value={"1"}>
+              Top Items
+            </option>
+            <option value={"2"}>Major Items</option>
+            <option value={"3"}>Minor Items</option>
+            <option value={"4"}>Hidden Items</option>
+            <option value={"1000000000"}>All Items</option>
+          </select>
         </div>
       </div>
       <br />
@@ -116,7 +138,7 @@ export const ViewFoodsContainer = ({
         <div className="center-text">
           <button
             className="new-item-button color-blue"
-            onClick={() => navigate("/food/new")}
+            onClick={() => navigate("/meal-maven/food/new")}
           >
             New Food
           </button>

@@ -70,7 +70,7 @@ router.get(`/searchFoods`, async (req, res) => {
     if (req.query.nutritionCategory) {
       condition.nutritionCategory = req.query.nutritionCategory;
     }
-    const foods = await Food.find(condition);
+    const foods = await Food.find(condition).sort({ title: 1 });
     return res.send(foods);
   } catch (error) {
     return throwError(req, res, error);

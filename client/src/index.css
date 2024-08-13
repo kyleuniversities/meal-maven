@@ -215,3 +215,7 @@ code {
   border: 1px solid rgb(140, 180, 200);
   border-radius: 20px;*/
 }
+
+.top-controls-container {
+  padding-top: 10px;
+}

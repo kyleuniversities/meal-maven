@@ -27,6 +27,7 @@ const PutDaysPage = ({ id }) => {
       : {
           title: "Sample Day",
           variant: "Normal",
+          startingWeight: 0,
           weight: 0,
           visibilityRank: 1,
           items: [],
@@ -52,6 +53,7 @@ const PutDaysPage = ({ id }) => {
     return {
       title: day.title,
       variant: day.variant,
+      startingWeight: day.startingWeight,
       visibilityRank: day.visibilityRank,
       items: dayMeals.map((dayMeal) => ({
         ...dayMeal,
@@ -150,6 +152,7 @@ const PutDaysPage = ({ id }) => {
           </div>
           <EditItemLabel title="Title" item={day} setItem={setDay} />
           <EditItemLabel title="Variant" item={day} setItem={setDay} />
+          <EditItemLabel title="Starting Weight" item={day} setItem={setDay} />
           <DayMealsContainer>
             <div>
               <h4>Day Meals:</h4>

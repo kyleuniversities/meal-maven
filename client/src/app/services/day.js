@@ -19,7 +19,7 @@ export async function addDay(dayBody) {
   // Run request
   return await request(`/day`, options).then((day) => {
     debugAlert("addDay-finished");
-    window.location.assign(`/day`);
+    window.location.assign(`/meal-maven/day`);
   });
 }
 
@@ -27,8 +27,8 @@ export async function addDay(dayBody) {
  * READ Method
  * Loads all days
  */
-export async function loadDays(setDays) {
-  const days = await request(`/day?visibilityRank=${VISIBILITY_RANK}`);
+export async function loadDays(visibilityRank, setDays) {
+  const days = await request(`/day?visibilityRank=${visibilityRank}`);
   setDays(days);
   return days;
 }
@@ -37,9 +37,9 @@ export async function loadDays(setDays) {
  * READ Method
  * Loads all days
  */
-export async function loadSearchedDays(query, setDays) {
+export async function loadSearchedDays(visibilityRank, query, setDays) {
   const days = await request(
-    `/day?name=${query}&visibilityRank=${VISIBILITY_RANK}`,
+    `/day?name=${query}&visibilityRank=${visibilityRank}`,
   );
   setDays(days);
   return days;
@@ -72,7 +72,7 @@ export async function updateDay(id, dayBody) {
   // Run request
   return await request(`/day/${id}`, options).then((day) => {
     debugAlert("updateDay-finished");
-    window.location.assign(`/day`);
+    window.location.assign(`/meal-maven/day`);
   });
 }
 
@@ -108,6 +108,6 @@ export async function deleteDay(id) {
 
   // Run request
   return await request(`/day/${id}`, options).then((day) => {
-    window.location.assign(`/day`);
+    window.location.assign(`/meal-maven/day`);
   });
 }
