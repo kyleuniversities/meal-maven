@@ -9,7 +9,7 @@ export const NULL_TOKEN = "";
  * Utility function for finding the api host
  */
 export const deriveApiHost = () => {
-  if (process.env["REACT_APP_IS_DEVELOPING"]) {
+  if (process.env["REACT_APP_IS_DEVELOPING"] === "true") {
     return DEVELOPMENT_HOST;
   }
   return process.env["REACT_APP_API_FULL_HOST"] || DEFAULT_HOST;
