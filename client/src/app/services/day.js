@@ -19,7 +19,7 @@ export async function addDay(dayBody) {
   // Run request
   return await request(`/day`, options).then((day) => {
     debugAlert("addDay-finished");
-    window.location.assign(`/day`);
+    window.location.assign(`/meal-maven/day`);
   });
 }
 
@@ -72,7 +72,7 @@ export async function updateDay(id, dayBody) {
   // Run request
   return await request(`/day/${id}`, options).then((day) => {
     debugAlert("updateDay-finished");
-    window.location.assign(`/day`);
+    window.location.assign(`/meal-maven/day`);
   });
 }
 
@@ -108,6 +108,6 @@ export async function deleteDay(id) {
 
   // Run request
   return await request(`/day/${id}`, options).then((day) => {
-    window.location.assign(`/day`);
+    window.location.assign(`/meal-maven/day`);
   });
 }

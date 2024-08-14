@@ -106,7 +106,7 @@ export const MealContainer = ({
               <div className="float-right">
                 <button
                   className="new-item-button color-green"
-                  onClick={() => navigate(`/meal/edit/${meal._id}`)}
+                  onClick={() => navigate(`/meal-maven/meal/edit/${meal._id}`)}
                 >
                   Edit Meal
                 </button>
