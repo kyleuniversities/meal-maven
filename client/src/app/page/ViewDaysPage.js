@@ -49,7 +49,7 @@ export const ViewDaysPage = () => {
         <div className="inline-container float-right">
           <button
             className="new-item-button color-blue"
-            onClick={() => navigate("/meal-maven/day/new")}
+            onClick={() => navigate("/day/new")}
           >
             New Day
           </button>
@@ -58,7 +58,7 @@ export const ViewDaysPage = () => {
           <div className="inline-container float-right">
             <button
               className="new-item-button color-yellow"
-              onClick={() => navigate("/meal-maven")}
+              onClick={() => navigate("/")}
             >
               To Foods
             </button>
@@ -123,7 +123,7 @@ export const ViewDaysPage = () => {
       <div className="center-text">
         <button
           className="new-item-button color-blue"
-          onClick={() => navigate("/meal-maven/day/new")}
+          onClick={() => navigate("/day/new")}
         >
           New Day
         </button>

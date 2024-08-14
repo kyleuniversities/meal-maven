@@ -19,7 +19,7 @@ export async function addFood(foodBody) {
   // Run request
   return await request(`/food`, options).then((food) => {
     debugAlert("addFood-finished");
-    window.location.assign(`/meal-maven`);
+    window.location.assign(`/`);
   });
 }
 
@@ -82,7 +82,7 @@ export async function updateFood(id, foodBody) {
   // Run request
   return await request(`/food/${id}`, options).then((food) => {
     debugAlert("updateFood-finished");
-    window.location.assign(`/meal-maven`);
+    window.location.assign(`/`);
   });
 }
 
@@ -118,6 +118,6 @@ export async function deleteFood(id) {
 
   // Run request
   return await request(`/food/${id}`, options).then((food) => {
-    window.location.assign(`/meal-maven`);
+    window.location.assign(`/`);
   });
 }

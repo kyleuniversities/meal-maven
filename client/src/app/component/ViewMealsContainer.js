@@ -55,7 +55,7 @@ export const ViewMealsContainer = ({
           <div className="inline-container float-right">
             <button
               className="new-item-button color-blue"
-              onClick={() => navigate("/meal-maven/meal/new")}
+              onClick={() => navigate("/meal/new")}
             >
               New Meal
             </button>
@@ -65,7 +65,7 @@ export const ViewMealsContainer = ({
               <div className="inline-container float-right">
                 <button
                   className="new-item-button color-yellow"
-                  onClick={() => navigate("/meal-maven/meal")}
+                  onClick={() => navigate("/meal")}
                 >
                   To Days
                 </button>
@@ -138,7 +138,7 @@ export const ViewMealsContainer = ({
         <div className="center-text">
           <button
             className="new-item-button color-blue"
-            onClick={() => navigate("/meal-maven/meal/new")}
+            onClick={() => navigate("/meal/new")}
           >
             New Meal
           </button>
