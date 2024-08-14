@@ -1,0 +1,98 @@
+(node:1998) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1998) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:2375) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2375) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:2699) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2699) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:3074) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3074) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+node:internal/modules/cjs/loader:1137
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/kyleuniversities/repos/meal-maven/server/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1134:15)
+    at Module._load (node:internal/modules/cjs/loader:975:27)
+    at Module.require (node:internal/modules/cjs/loader:1225:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (/home/kyleuniversities/repos/meal-maven/server/index.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/home/kyleuniversities/repos/meal-maven/server/index.js' ]
+}
+
+Node.js v18.19.0
+(node:3207) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3207) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:3318) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3318) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+sh: 1: nodemon: not found
+(node:12977) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:12977) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:14180) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14180) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:14814) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14814) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(node:14881) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14881) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
