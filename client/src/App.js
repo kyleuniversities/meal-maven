@@ -8,6 +8,12 @@ import { ViewDaysPage } from "./app/page/ViewDaysPage";
 import { AddDayPage, EditDayPage } from "./app/page/PutDayPage";
 import { ClosedLandingPage } from "./app/page/ClosedLandingPage";
 import { RequestPage } from "./app/page/RequestPage";
+import {
+  DoubleParameterPage,
+  QuadrupleParametersPage,
+  SingleParameterPage,
+  TripleParameterPage,
+} from "./app/page/ParameterPage";
 
 function App() {
   return (
@@ -24,6 +30,16 @@ function App() {
         <Route path="/meal-maven" element={<ViewFoodPage />} />
         <Route path="/meal-maven/food/new" element={<AddFoodPage />} />
         <Route path="/meal-maven/food/edit/:id" element={<EditFoodPage />} />
+        <Route path="/:param1" element={<SingleParameterPage />} />
+        <Route path="/:param1/:param2" element={<DoubleParameterPage />} />
+        <Route
+          path="/:param1/:param2/:param3"
+          element={<TripleParameterPage />}
+        />
+        <Route
+          path="/:param1/:param2/:param3/:param4"
+          element={<QuadrupleParametersPage />}
+        />
       </Routes>
     </BrowserRouter>
   );
