@@ -30,16 +30,6 @@ function App() {
         <Route path="/meal-maven" element={<ViewFoodPage />} />
         <Route path="/meal-maven/food/new" element={<AddFoodPage />} />
         <Route path="/meal-maven/food/edit/:id" element={<EditFoodPage />} />
-        <Route path="/:param1" element={<SingleParameterPage />} />
-        <Route path="/:param1/:param2" element={<DoubleParameterPage />} />
-        <Route
-          path="/:param1/:param2/:param3"
-          element={<TripleParameterPage />}
-        />
-        <Route
-          path="/:param1/:param2/:param3/:param4"
-          element={<QuadrupleParametersPage />}
-        />
       </Routes>
     </BrowserRouter>
   );
